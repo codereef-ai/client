@@ -6,7 +6,7 @@ A cross-platform Client with a Command Line Interface and a Python API for the [
 
 | Support       | As a host platform | As a target platform |
 |---------------|:------------------:|:--------------------:|
-| Linux (x86)   | ✓ | ✓ |
+| Generic Linux | ✓ | ✓ |
 | Linux (Arm)   | ✓ | ✓ |
 | Raspberry Pi  | ✓ | ✓ |
 | MacOS         | ✓ | ✓ |
