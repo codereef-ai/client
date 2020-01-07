@@ -4,6 +4,17 @@
 
 A cross-platform Client with a Command Line Interface and a Python API for the [open CodeReef portal](https://codereef.ai/portal).
 
+| Support       | As a host platform | As a target platform |
+|---------------|:------------------:|:--------------------:|
+| Linux (x86)   | ✓ | ✓ |
+| Linux (Arm)   | ✓ | ✓ |
+| Raspberry Pi  | ✓ | ✓ |
+| MacOS         | ✓ | ✓ |
+| Windows       | ✓ | ✓ |
+| iOS           | TBD | TBD |
+| Android       | prototyping | ✓ |
+
+
 [CodeReef.ai](https://codereef.ai) is an open platform to assemble portable workflows, 
 crowd-benchmark AI/ML algorithms across different software, hardware, models and data sets,
 and support open reproducibility initiatives.
