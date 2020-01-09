@@ -1,0 +1,49 @@
+* 0.7.18
+  - added default crowd-user for crowd-benchmarking
+
+* 0.7.17
+  - fixes for Windows
+
+* 0.7.16
+  - more fixes for Android
+
+* 0.7.15
+  - fixes for Android (platform info and timing)
+
+* 0.7.14
+  - added soft:tool.adb for boostrapping (to be able to work with Android devices)
+
+* 0.7.12
+  - added possibility to download all deps for CK components (cr download ... --all)
+
+* 0.7.11
+  - minor bug fixes
+
+* 0.7.10
+  - improved pushing results to server (online/offline)
+
+* 0.7.9 
+  - added heartbeat image
+
+* 0.7.8
+  - Added possibility to change CodeReef username and API key via environment
+
+* 0.7.7
+  - Added support to send converted data to different graphs
+    (for example, to support crowd-benchmarking for MLPerf graphs)
+
+* 0.7.6
+  - Added recording of platform info and resolved dependencies during crowd-benchmarking
+    (i.e. pushing this info to CodeReef graphs for reproducibility)
+
+* 0.7.5
+  - A few bugs fixed
+
+* 0.7.4 
+  - Added new CK dependencies on package, soft and env with variations
+
+* 0.7.3
+  - First beta release
+
+* 0.5.1 (20190816)
+  - First internal commit
