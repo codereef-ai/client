@@ -1,3 +1,7 @@
+* 0.7.19
+  - added __main__.py to be able to run the client
+    using "python -m codereef"
+
 * 0.7.18
   - added default crowd-user for crowd-benchmarking
 
