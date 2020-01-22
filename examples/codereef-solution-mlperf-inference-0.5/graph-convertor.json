@@ -1,0 +1,20 @@
+[
+ {
+   "graph_id": "sota-mlperf-object-detection-v0.5-crowd-benchmarking",
+   "keys": [
+     {"key1":"##resolved_deps#weights#data_name", "key2":"##resolved_deps#weights#package_uoa","out_key":"benchmark"},
+     {"value":"https://codereef.ai/portal/c/cr-solution/demo-obj-detection-mlperf-coco-tf-cpu-benchmark-linux-portable-workflows", "out_key":"code"},
+     {"value":"https://codereef.ai/portal/c/cr-solution/demo-obj-detection-mlperf-coco-tf-cpu-benchmark-linux-portable-workflows", "out_key":"details"},
+     {"value":"Crowd-benchmarking using CodeReef portable workflows", "out_key":"notes"},
+     {"key1":"##platform_info#cpu_unique@0#model name", "out_key":"processor"},
+     {"key1":"##resolved_deps#lib-tensorflow#version", "value": "TensorFlow v", "out_key":"software"},
+     {"value":"CodeReef crowd-benchmarking", "out_key":"submitter"},
+     {"key1":"##platform_info#platform#vendor", "key2":"##platform_info#platform#model", "key3":"##platform_info#platform#name", "out_key":"system"},
+     {"key1":"avg_time_ms", "out_key":"p_od2_ss"},
+     {"key1":"mAP", "out_key":"a_od2_ss", "multiply":100.0},
+     {"out_key":"codereef_solution_uid", "value": "4a878a967f3636b9"},
+     {"out_key":"codereef_solution_uoa", "value": "demo-obj-detection-mlperf-coco-tf-cpu-benchmark-linux-portable-workflows"},
+     {"out_key":"codereef_crowd_benchmarking", "value": "yes"}
+   ]
+ }
+]

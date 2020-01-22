@@ -1,0 +1,4 @@
+#! /bin/bash
+
+cr start
+

@@ -1,0 +1,76 @@
+cr download --version=1.0.0 --force package:model-tf-mlperf-ssd-mobilenet
+cr download --version=1.0.0 --force soft:model.tensorflow.object-detection
+cr download --version=1.0.0 --force script:install-package-tensorflowmodel-object-detection
+
+cr download --version=1.0.0 --force package:lib-python-numpy
+cr download --version=1.0.0 --force soft:lib.python.numpy
+
+cr download --version=1.0.0 --force package:lib-python-scipy
+cr download --version=1.0.0 --force soft:lib.python.scipy
+
+cr download --version=1.0.0 --force package:lib-python-matplotlib
+cr download --version=1.0.0 --force soft:lib.python.matplotlib
+
+cr download --version=1.0.0 --force package:lib-python-pillow
+cr download --version=1.0.0 --force soft:lib.python.pillow
+
+cr download --version=1.0.0 --force package:lib-python-cython
+cr download --version=1.0.0 --force soft:lib.python.cython
+
+cr download --version=1.0.0 --force package:lib-python-cv2
+cr download --version=1.0.0 --force soft:lib.python.cv2
+
+cr download --version=1.0.0 --force package:tool-coco-codereef
+cr download --version=1.0.0 --force soft:tool.coco
+
+cr download --version=1.0.0 --force package:dataset-coco-2017-val
+cr download --version=1.0.0 --force soft:dataset.coco.2017.val
+
+cr download --version=1.0.0 --force package:lib-tensorflow-1.1.0-cpu
+cr download --version=1.0.0 --force package:lib-tensorflow-1.4.0-cpu
+cr download --version=1.0.0 --force package:lib-tensorflow-1.14.0-cpu
+cr download --version=1.0.0 --force soft:lib.tensorflow
+
+cr download --version=1.0.0 --force package:labelmap-coco
+cr download --version=1.0.0 --force soft:labelmap.object-detection
+
+cr download --version=1.0.0 --force soft:compiler.gcc
+
+cr download --version=1.0.0 --force package:tensorflowmodel-api-object-detection
+cr download --version=1.0.0 --force soft:model.tensorflow-models-api
+
+cr download --version=1.0.0 --force package:lib-protobuf-3.0.0-host
+cr download --version=1.0.0 --force soft:lib.protobuf.host
+
+cr download --version=1.0.0 --force script:process-compiler-for-cmake
+
+cr download --version=1.0.0 --force soft:tool.cmake
+
+cr download --version=1.0.0 --force soft:lib.protobuf.host
+
+cr download --version=1.0.1 --force module:program
+cr download --version=1.0.0 --force module:dataset
+cr download --version=1.0.0 --force module:pipeline
+cr download --version=1.0.0 --force module:choice
+cr download --version=1.0.0 --force module:experiment
+cr download --version=1.0.0 --force module:math.variation
+
+cr download --version=1.2.1 --force program:object-detection-tf-py-benchmark
+
+
+
+
+ck install package:lib-tensorflow-1.14.0-cpu
+
+ck install package --tags=model,tf,object-detection,mlperf,ssd-mobilenet,non-quantized
+
+ck install package --tags=lib,python-package,numpy
+ck install package --tags=lib,python-package,scipy --force_version=1.2.1
+ck install package --tags=lib,python-package,matplotlib
+ck install package --tags=lib,python-package,pillow
+ck install package --tags=lib,python-package,cython
+ck install package --tags=lib,python-package,cv2
+
+ck install package:tool-coco
+
+ck install package:dataset-coco-2017-val
