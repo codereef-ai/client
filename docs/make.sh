@@ -1,0 +1,1 @@
+. ./make-docs.sh html
