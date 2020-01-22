@@ -20,13 +20,13 @@ Welcome to the CodeReef documentation!
 
    getting-started/installation
    getting-started/demo-mlperf
-   guide/use-cases
 
 .. toctree::
    :maxdepth: 2
    :caption: User Guide
 
    guide/commands
+   guide/use-cases
 
 .. toctree::
    :maxdepth: 2
