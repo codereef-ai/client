@@ -24,7 +24,11 @@ object detection based on [SSD-Mobilenets, TensorFlow and COCO dataset](https://
 from the latest [MLPerf inference benchmark](https://mlperf.org) across a wide range of platforms 
 from Raspberry Pi, Android phones and IoT devices to HPC servers with powerful GPUs.
 
-*See our white-papers for more details: TBA*
+**See CodeReef white-papers for more details:**
+* [CodeReef: an open platform for portable MLOps, reusable automation actions and reproducible benchmarking](https://arxiv.org/abs/2001.07935) [![ArXiv](https://img.shields.io/badge/cs.LG-arXiv%3A2001.07935-B31B1B.svg)](https://arxiv.org/abs/2001.07935)
+* [CodeReef and MLPerf demo: keeping up with AI, ML and systems innovation with portable workflows and collaborative benchmarking](https://doi.org/10.5281/zenodo.3625479) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3625479.svg)](https://doi.org/10.5281/zenodo.3625479)
+
+
 
 ## Why CodeReef?
 

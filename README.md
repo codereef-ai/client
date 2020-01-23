@@ -4,7 +4,8 @@
 
 A cross-platform Client with a Command Line Interface and a Python API for the [open CodeReef portal](https://codereef.ai/portal).
 
-See [CodeReef documentation](https://codereef.ai/static/docs) for more details.
+* CodeReef documentation: [online](https://codereef.ai/static/docs).
+* CodeReef white papers: [![ArXiv](https://img.shields.io/badge/cs.LG-arXiv%3A2001.07935-B31B1B.svg)](https://arxiv.org/abs/2001.07935)  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3625479.svg)](https://doi.org/10.5281/zenodo.3625479)
 
 | Support       | As a host platform | As a target platform |
 |---------------|:------------------:|:--------------------:|
