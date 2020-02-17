@@ -1,3 +1,10 @@
+* 0.7.20
+  - added "list-versions" to list all versions of a given component
+  - added "open" to open a CodeReef web page for a component 
+  - improved "cr init" last message
+  - added link to CodeReef docs to error message
+  - improved documentation building
+
 * 0.7.19
   - added __main__.py to be able to run the client
     using "python -m codereef"
