@@ -150,6 +150,11 @@ as follows:
 cr publish {module name}:{data name} --version={version}
 ```
 
+You can check the latest version of a given component at the CodeReef portal as follows:
+```
+cr versions {module name}:{data name}
+```
+
 You can specify extra options describing your component:
 ```
  --author TEXT
@@ -164,6 +169,31 @@ In such case, it will be only visible for you or within your workgroups.
 
 You can specify the list of workgroups for the published component using
 the flag "--workspaces={list of CodeReef workspaces separated by comma}".
+
+### List versions of a given component
+
+*List versions of a given CK component at the CodeReef portal.*
+
+
+```
+cr versions --help
+```
+
+You can list all shared versions of a given CK component shared at the [Codereef portal](https://codereef.ai/portal)
+as follows:
+
+```
+cr versions {module name}:{data name}
+```
+
+### Open a CodeReef web page with a given component
+
+*Open a CodeReef web page with a given component.*
+
+
+```
+cr open {module name}:{data name}
+```
 
 ## CodeReef dashboards
 

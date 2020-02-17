@@ -383,6 +383,135 @@ def publish(i):
     return {'return':0}
 
 ##############################################################################
+# List versions of a given CK component at the CodeReef portal
+
+def versions(i):
+
+    """
+    Input:  {
+              cid [str] - CK CID of format (repo UOA:)module UOA:data UOA
+            }
+
+    Output: {
+              return  [int]    - return code = 0 if success or >0 if error
+              (error) [str]    - error string if return>0 
+            }
+    """
+
+    # Get current configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r['dict']
+
+    # Check commands
+    # Username ##########################################################
+    username=cfg.get('username','')
+    if i.get('username')!=None: username=i['username']
+
+    if username=='' or username==None: 
+       return {'return':1, 'error':'Username is not defined'}
+
+    cfg['username']=username
+
+    # API key ###########################################################        
+    api_key=cfg.get('api_key','')
+
+    if i.get('api_key')!=None: api_key=i['api_key']
+
+    if api_key=='' or api_key==None: 
+       return {'return':1, 'error':'API key is not defined'}
+
+    cfg['api_key']=api_key
+
+    # CID ###########################################################        
+    cid=i.get('cid')
+
+    if cid=='' or cid==None: 
+       return {'return':1, 'error':'CK entry (CID) is not defined'}
+
+    # Parse CID
+    r=ck.parse_cid({'cid':cid})
+    if r['return']>0: return r
+
+    data_uoa=r.get('data_uoa','')
+    module_uoa=r.get('module_uoa','')
+
+    # Call CodeReef API
+    r=comm.send({'config':cfg,
+                 'action':'list_versions',
+                 'dict':{
+                   'module_uoa':module_uoa,
+                   'data_uoa':data_uoa
+                 }
+                })
+    if r['return']>0: return r
+
+    versions=r.get('versions',[])
+    for v in versions:
+        vv=v.get('version','')
+        dt=v.get('iso_datetime','').replace('T',' ')
+
+        ck.out(vv+' ('+dt+')')
+
+    return r
+
+##############################################################################
+# Open CodeReef portal with a given CK component
+
+def open(i):
+
+    """
+    Input:  {
+              cid [str] - CK CID of format (repo UOA:)module UOA:data UOA
+            }
+
+    Output: {
+              return  [int]    - return code = 0 if success or >0 if error
+              (error) [str]    - error string if return>0 
+            }
+    """
+
+    # Get current configuration
+    r=config.load({})
+    if r['return']>0: return r
+    cfg=r['dict']
+
+    # URL
+    url=cfg.get('server_url','')
+    if url!='':
+       h=url.find('api/')
+       if h>0:
+          url=url[:h]
+       else:
+          url=''
+
+    if url=='':
+       url='https://codereef.ai/portal/'
+
+    # CID ###########################################################        
+    cid=i.get('cid')
+
+    if cid=='' or cid==None: 
+       return {'return':1, 'error':'CK entry (CID) is not defined'}
+
+    # Parse CID
+    r=ck.parse_cid({'cid':cid})
+    if r['return']>0: return r
+
+    data_uoa=r.get('data_uoa','')
+    module_uoa=r.get('module_uoa','')
+
+    # Form URL
+    url+='c/'+module_uoa+'/'+data_uoa
+
+    ck.out('Opening CodeReef page '+url+' ...')
+
+    import webbrowser
+    webbrowser.open(url)
+
+    return {'return':0}
+
+##############################################################################
 # Download CK component from the CodeReef portal to the local repository
 
 def download(i):

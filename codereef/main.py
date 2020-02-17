@@ -14,6 +14,18 @@ import ck.kernel as ck
 def cli():
     return 0
 
+##############################################################################
+def process_error(r):
+
+    e=r.get('error','')
+    if e!='':
+       e+=' (check CodeReef docs at https://CodeReef.ai/static/docs)'
+       r['error']=e
+    
+    ck.err(r)
+    # Should not reach here since ck.err exits program
+    return
+
 # SETUP CLIENT #############################################################################
 @cli.command()
 
@@ -122,7 +134,41 @@ def publish(cid,
                    'license':license,
                    'source':source})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
+    return 0
+
+# LIST VERSIONS OF A GIVEN COMPONENT #############################################################################
+@cli.command()
+
+@click.argument('cid')
+
+def versions(cid):
+    '''
+    List versions of a given component at the CodeReef portal.
+
+    CID: CK identifier ({repo UOA}:){module UOA}:{data UOA}.
+    ''' 
+    from . import obj
+    r=obj.versions({'cid':cid})
+
+    if r['return']>0: process_error(r)
+    return 0
+
+# OPEN CODEREEF PORTAL WITH A GIVEN COMPONENT #############################################################################
+@cli.command()
+
+@click.argument('cid')
+
+def open(cid):
+    '''
+    Open CodeReef portal with a given component
+
+    CID: CK identifier ({repo UOA}:){module UOA}:{data UOA}.
+    ''' 
+    from . import obj
+    r=obj.open({'cid':cid})
+
+    if r['return']>0: process_error(r)
     return 0
 
 # DOWNLOAD COMPONENT #############################################################################
@@ -152,7 +198,7 @@ def download(cid,
                     'tags':tags,
                     'all':all})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # BOOSTRAP #############################################################################
@@ -168,7 +214,7 @@ def update(force):
     from . import config
     r=config.update({'force':force})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # INIT GRAPH #############################################################################
@@ -192,7 +238,7 @@ def init_graph(uid,
                   'version':version,
                   'desc_file':desc_file})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # PUSH RESULT #############################################################################
@@ -222,7 +268,7 @@ def push_result(uid,
                   'json':json_string,
                   'point':point})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # ACCESS API #############################################################################
@@ -240,7 +286,7 @@ def access(filename,
     r=comm.access({'filename':filename,
                    'json':json_string})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # INIT SOLUTION #############################################################################
@@ -357,7 +403,7 @@ def init(uid,
                      'desc_graph':desc_graph,
                      'graph_convertor':graph_convertor})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # ACTIVATE SOLUTION #############################################################################
@@ -374,7 +420,7 @@ def activate(uid):
     from . import solution
     r=solution.activate({'uid':uid})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # RUN SOLUTION #############################################################################
@@ -395,7 +441,7 @@ def benchmark(uid,
     r=solution.benchmark({'uid':uid,
                     'cmd':cmd})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # RUN SOLUTION #############################################################################
@@ -416,7 +462,7 @@ def run(uid,
     r=solution.run({'uid':uid,
                     'cmd':cmd})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # LIST SOLUTIONS #############################################################################
@@ -433,7 +479,7 @@ def ls(uid):
     from . import solution
     r=solution.ls({'uid':uid})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # FIND SOLUTION #############################################################################
@@ -450,7 +496,7 @@ def find(uid):
     from . import solution
     r=solution.find({'uid':uid})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # DELETE SOLUTION #############################################################################
@@ -467,7 +513,7 @@ def rm(uid):
     from . import solution
     r=solution.rm({'uid':uid})
 
-    if r['return']>0: ck.err(r)
+    if r['return']>0: process_error(r)
     return 0
 
 # START SERVICE TO COMMUNICATE WITH CODEREEF PORTAL #############################################################################

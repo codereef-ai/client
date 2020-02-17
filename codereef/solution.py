@@ -774,24 +774,16 @@ def init(i):
     ck.out('CodeReef solution was successfully prepared!')
 
     ck.out('')
-    ck.out('You can activate CodeReef virtual env for this solution as follows:')
-    ck.out('cr activate '+uid)
-
-    ck.out('')
-    ck.out('You can run this CodeReef solution as follows:')
-    ck.out('cr run '+uid)
-
-    ck.out('')
     ck.out('You can crowd-benchmark this CodeReef solution (if supported) as follows:')
     ck.out('cr benchmark '+uid)
 
     ck.out('')
-    ck.out('You can publish this CodeReef solution to CodeReef portal as follows:')
-    ck.out('cr publish cr-solution:'+uid+' (--private)')
+    ck.out('You can run this CodeReef solution locally as follows:')
+    ck.out('cr run '+uid)
 
     ck.out('')
-    ck.out('You can run CodeReef service in the background to visualize results via CodeReef portal:')
-    ck.out('cr start')
+    ck.out('You can activate CodeReef virtual env for this solution to debug/improve it as follows:')
+    ck.out('cr activate '+uid)
 
     return {'return':0}
 
