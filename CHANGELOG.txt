@@ -1,5 +1,6 @@
 * 0.7.21
   - fixed problem with downloading CK components
+  - fixed anonymous access to "cr versions"
 
 * 0.7.20
   - added "cr versions" to list all versions of a given component
