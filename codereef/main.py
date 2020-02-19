@@ -166,7 +166,7 @@ def open(cid):
     CID: CK identifier ({repo UOA}:){module UOA}:{data UOA}.
     ''' 
     from . import obj
-    r=obj.open({'cid':cid})
+    r=obj.open_page({'cid':cid})
 
     if r['return']>0: process_error(r)
     return 0

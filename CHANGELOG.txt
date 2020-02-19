@@ -1,6 +1,10 @@
+* 0.7.21
+  - fixed problem with downloading CK components
+  - fixed anonymous access to "cr versions"
+
 * 0.7.20
-  - added "list-versions" to list all versions of a given component
-  - added "open" to open a CodeReef web page for a component 
+  - added "cr versions" to list all versions of a given component
+  - added "cr open" to open a CodeReef web page for a component 
   - improved "cr init" last message
   - added link to CodeReef docs to error message
   - improved documentation building
