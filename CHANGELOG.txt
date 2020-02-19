@@ -1,5 +1,5 @@
-* 0.7.20.1
-  - started new version
+* 0.7.21
+  - fixed problem with downloading CK components
 
 * 0.7.20
   - added "cr versions" to list all versions of a given component

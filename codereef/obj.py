@@ -403,26 +403,6 @@ def versions(i):
     if r['return']>0: return r
     cfg=r['dict']
 
-    # Check commands
-    # Username ##########################################################
-    username=cfg.get('username','')
-    if i.get('username')!=None: username=i['username']
-
-    if username=='' or username==None: 
-       return {'return':1, 'error':'Username is not defined'}
-
-    cfg['username']=username
-
-    # API key ###########################################################        
-    api_key=cfg.get('api_key','')
-
-    if i.get('api_key')!=None: api_key=i['api_key']
-
-    if api_key=='' or api_key==None: 
-       return {'return':1, 'error':'API key is not defined'}
-
-    cfg['api_key']=api_key
-
     # CID ###########################################################        
     cid=i.get('cid')
 
@@ -458,7 +438,7 @@ def versions(i):
 ##############################################################################
 # Open CodeReef portal with a given CK component
 
-def open(i):
+def open_page(i):
 
     """
     Input:  {
