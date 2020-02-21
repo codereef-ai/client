@@ -1,3 +1,4 @@
+[![Downloads](https://pepy.tech/badge/codereef)](https://pepy.tech/project/codereef)
 [![PyPI version](https://badge.fury.io/py/codereef.svg)](https://badge.fury.io/py/codereef)
 [![Python Version](https://img.shields.io/badge/python-2.7%20|%203.4+-blue.svg)](https://pypi.org/project/codereef)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
