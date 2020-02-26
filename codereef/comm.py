@@ -173,6 +173,8 @@ def access(i):
             }
     """
 
+    import json
+
     filename=i.get('filename','')
     json_string=i.get('json','')
 
@@ -189,8 +191,6 @@ def access(i):
        data.update(data2)
 
     if json_string!='':
-       import json
-
        json_string=json_string.replace("'", '"')
 
        data2=json.loads(json_string)
