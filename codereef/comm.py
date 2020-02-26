@@ -161,7 +161,10 @@ def access(i):
     """
     Input:  {
               (filename) [str] - load JSON from this file
+                or
               (json) [str] - parse JSON string from command line (use ' instead of ")
+                or
+              (dict) [dict] - dictionary to send to the CodeReef API
             }
 
     Output: {
@@ -173,11 +176,10 @@ def access(i):
     filename=i.get('filename','')
     json_string=i.get('json','')
 
-    if filename=='' and json_string=='':
-       return {'return':1, 'error':'either "filename" or "json" should define results to be pushed'}
+    data=i.get('dict',{})
 
-    # Prepare data
-    data={}
+    if filename=='' and json_string=='' and len(data)==0:
+       return {'return':1, 'error':'either "filename" or "json" or "dict" should define data to be pushed to CodeReef API'}
 
     if filename!='':
        r=ck.load_json_file({'json_file':filename})
