@@ -177,6 +177,7 @@ def access(i):
 
     filename=i.get('filename','')
     json_string=i.get('json','')
+    display=i.get('display','')
 
     data=i.get('dict',{})
 
@@ -209,10 +210,11 @@ def access(i):
     # Sending request to download
     r=send(ii)
     if r['return']>0: return r
+    
+    if display is True:
+      ck.out('Output:')
+      ck.out('')
 
-    ck.out('Output:')
-    ck.out('')
-
-    ck.out(json.dumps(r, indent=2))
+      ck.out(json.dumps(r, indent=2))
 
     return r

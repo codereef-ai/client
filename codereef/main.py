@@ -276,15 +276,19 @@ def push_result(uid,
 
 @click.option('-f', '--filename', 'filename', required=False, default='')
 @click.option('-j', '--json', 'json_string', required=False, default='')
+@click.option('-m', '--mute', 'display', is_flag=True, default=True)
+
 
 def access(filename,
-           json_string):
+           json_string,
+           display):
     '''
     Access CodeReef Portal via JSON API.
     ''' 
     from . import comm
     r=comm.access({'filename':filename,
-                   'json':json_string})
+                   'json':json_string,
+                   'display': display})
 
     if r['return']>0: process_error(r)
     return 0
