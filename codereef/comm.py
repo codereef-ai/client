@@ -177,6 +177,7 @@ def access(i):
 
     filename=i.get('filename','')
     json_string=i.get('json','')
+
     display=i.get('display','')
 
     data=i.get('dict',{})
@@ -197,6 +198,8 @@ def access(i):
        data2=json.loads(json_string)
 
        data.update(data2)
+    if display=='':
+       display=False
 
     # Get current configuration
     r=config.load({})
