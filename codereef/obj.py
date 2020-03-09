@@ -157,6 +157,12 @@ def publish(i):
         source2=data_meta.get('source','')
         if source2=='': source2=source
 
+        license2=data_meta.get('license','')
+        if license2=='': license2=license
+
+        copyright2=data_meta.get('copyright','')
+        if copyright2=='': copyright2=copyright
+
         # Specialize per specific modules
         not_digital_component=False
         extra_dict={}
@@ -364,8 +370,8 @@ def publish(i):
                        'version':version,
                        'author':author,
                        'author_codereef_id':author_codereef_id,
-                       'copyright':copyright,
-                       'license':license,
+                       'copyright':copyright2,
+                       'license':license2,
                        'source':source2,
                        'not_digital_component':not_digital_component,
                        'extra_dict':extra_dict,
