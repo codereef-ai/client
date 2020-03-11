@@ -157,6 +157,12 @@ def publish(i):
         source2=data_meta.get('source','')
         if source2=='': source2=source
 
+        license2=data_meta.get('license','')
+        if license2=='': license2=license
+
+        copyright2=data_meta.get('copyright','')
+        if copyright2=='': copyright2=copyright
+
         # Specialize per specific modules
         not_digital_component=False
         extra_dict={}
@@ -364,8 +370,8 @@ def publish(i):
                        'version':version,
                        'author':author,
                        'author_codereef_id':author_codereef_id,
-                       'copyright':copyright,
-                       'license':license,
+                       'copyright':copyright2,
+                       'license':license2,
                        'source':source2,
                        'not_digital_component':not_digital_component,
                        'extra_dict':extra_dict,
@@ -598,20 +604,11 @@ def download(i):
                      'common_func':'yes',
                      'repo_uoa':repo_uoa,
                      'module_uoa':muid,
-                     'data_uoa':duid})
+                     'data_uoa':duoa})
         if r['return']==0:
-           path=r['path']
-
            if not force:
               return {'return':8, 'error':'local entry for "'+xcid+'" already exists'}
-
-        # Find/create entry (as a placeholder for pack.zip)
-        r=ck.access({'action':'find',
-                     'common_func':'yes',
-                     'repo_uoa':repo_uoa,
-                     'module_uoa':muid,
-                     'data_uoa':duid})
-        if r['return']>0:
+        else:
            if r['return']!=16: return r
 
            r=ck.access({'action':'add',
@@ -667,6 +664,12 @@ def download(i):
                   fo=open(pp, 'wb')
                   fo.write(z.read(d))
                   fo.close()
+
+                  if pp.endswith('.sh') or pp.endswith('.bash'):
+                     import os
+                     st=os.stat(pp)
+                     os.chmod('somefile', st.st_mode | stat.S_IEXEC)
+                     
         f.close()
 
         # Remove pack file

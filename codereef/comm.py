@@ -161,7 +161,10 @@ def access(i):
     """
     Input:  {
               (filename) [str] - load JSON from this file
+                or
               (json) [str] - parse JSON string from command line (use ' instead of ")
+                or
+              (dict) [dict] - dictionary to send to the CodeReef API
             }
 
     Output: {
@@ -170,14 +173,17 @@ def access(i):
             }
     """
 
+    import json
+
     filename=i.get('filename','')
     json_string=i.get('json','')
 
-    if filename=='' and json_string=='':
-       return {'return':1, 'error':'either "filename" or "json" should define results to be pushed'}
+    display=i.get('display','')
 
-    # Prepare data
-    data={}
+    data=i.get('dict',{})
+
+    if filename=='' and json_string=='' and len(data)==0:
+       return {'return':1, 'error':'either "filename" or "json" or "dict" should define data to be pushed to CodeReef API'}
 
     if filename!='':
        r=ck.load_json_file({'json_file':filename})
@@ -187,13 +193,13 @@ def access(i):
        data.update(data2)
 
     if json_string!='':
-       import json
-
        json_string=json_string.replace("'", '"')
 
        data2=json.loads(json_string)
 
        data.update(data2)
+    if display=='':
+       display=False
 
     # Get current configuration
     r=config.load({})
@@ -207,10 +213,11 @@ def access(i):
     # Sending request to download
     r=send(ii)
     if r['return']>0: return r
+    
+    if display is True:
+      ck.out('Output:')
+      ck.out('')
 
-    ck.out('Output:')
-    ck.out('')
-
-    ck.out(json.dumps(r, indent=2))
+      ck.out(json.dumps(r, indent=2))
 
     return r
