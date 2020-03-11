@@ -1,3 +1,6 @@
+* 0.7.22.1
+  - started new version
+
 * 0.7.22
   - when publish components, take "license" and "copyright" from meta
   - add 0755 to .sh files in archives (for program workflow)

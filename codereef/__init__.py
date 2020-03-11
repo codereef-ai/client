@@ -5,4 +5,4 @@
 # Developer(s): Grigori Fursin, https://fursin.net
 #
 
-__version__ = "0.7.22"
+__version__ = "0.7.22.1"
