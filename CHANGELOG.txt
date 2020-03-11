@@ -1,5 +1,5 @@
-* 0.7.22.1
-  - started new version
+* 0.7.23
+  - major bug fix with download (missing stat)
 
 * 0.7.22
   - when publish components, take "license" and "copyright" from meta
