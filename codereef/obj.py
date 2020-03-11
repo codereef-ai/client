@@ -604,20 +604,11 @@ def download(i):
                      'common_func':'yes',
                      'repo_uoa':repo_uoa,
                      'module_uoa':muid,
-                     'data_uoa':duid})
+                     'data_uoa':duoa})
         if r['return']==0:
-           path=r['path']
-
            if not force:
               return {'return':8, 'error':'local entry for "'+xcid+'" already exists'}
-
-        # Find/create entry (as a placeholder for pack.zip)
-        r=ck.access({'action':'find',
-                     'common_func':'yes',
-                     'repo_uoa':repo_uoa,
-                     'module_uoa':muid,
-                     'data_uoa':duid})
-        if r['return']>0:
+        else:
            if r['return']!=16: return r
 
            r=ck.access({'action':'add',
@@ -673,6 +664,12 @@ def download(i):
                   fo=open(pp, 'wb')
                   fo.write(z.read(d))
                   fo.close()
+
+                  if pp.endswith('.sh') or pp.endswith('.bash'):
+                     import os
+                     st=os.stat(pp)
+                     os.chmod('somefile', st.st_mode | stat.S_IEXEC)
+                     
         f.close()
 
         # Remove pack file
