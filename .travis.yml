@@ -9,7 +9,7 @@ matrix:
         - os: osx
           osx_image: xcode9.2
           language: python
-          python:   3.7
+          python:   3.6
 
 install:
     - echo "Env var TRAVIS_OS_NAME ${TRAVIS_OS_NAME}"
