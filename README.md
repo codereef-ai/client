@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Linux/MacOS: [![Build Status](https://travis-ci.org/codereef-ai/client.svg?branch=master)](https://travis-ci.org/codereef-ai/client)
-
+Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/wfb62aabosuow8q2?svg=true)](https://ci.appveyor.com/project/gfursin/client-dev)
 
 A cross-platform Client with a Command Line Interface and a Python API for the [open CodeReef portal](https://codereef.ai/portal).
 
