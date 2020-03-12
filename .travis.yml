@@ -7,18 +7,31 @@ python:
 matrix:
     include:
         - os: osx
-          osx_image: xcode9.2
           language: python
-          python:   3.6
+          python:   3.6.8
+
+before_install:
+    - |
+        if [ $TRAVIS_OS_NAME == "osx" ]; then
+              curl https://www.python.org/ftp/python/3.6.8/python-3.6.8-macosx10.9.pkg -s -o /tmp/python.pkg
+              ${SUDOH} installer -pkg /tmp/python.pkg -target /
+              ls -l /Library/Frameworks/Python.framework/Versions/3.6/bin
+              export PATH=/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH
+              export PIP_EXE=pip3
+              export PYTHON_EXE=python3
+        else
+              export PIP_EXE=pip
+              export PYTHON_EXE=python
+        fi
 
 install:
     - echo "Env var TRAVIS_OS_NAME ${TRAVIS_OS_NAME}"
     - echo "Env var WANTED_PYTHON_VERSION ${WANTED_PYTHON_VERSION}"
     - echo "Current directory ${CWD}"
-    - python --version
-    - pip --version
-    - pip install setuptools
-    - python setup.py install
+    - ${PYTHON_EXE} --version
+    - ${PIP_EXE} --version
+    - ${PIP_EXE} install setuptools
+    - ${PYTHON_EXE} setup.py install
 
 script:
     - cr download package:lib-tensorflow-pip --all
