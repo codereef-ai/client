@@ -12,6 +12,7 @@ matrix:
         - name: "OSX"
           os: osx
           language: python
+          python:   3
 
 install:
     - echo "Env var TRAVIS_OS_NAME ${TRAVIS_OS_NAME}"
@@ -23,4 +24,4 @@ install:
     - python setup.py install
 
 script:
-    - cr download program:object-detection-tf-py --version=1.0.0 --all
+    - cr download package:lib-tensorflow-pip --all
