@@ -1,0 +1,16 @@
+environment:
+
+  matrix:
+
+    # Python versions available on Appveyor: http://www.appveyor.com/docs/installed-software#python
+
+    - PYTHON: "C:\\Python37-x64"
+
+install:
+    - pip install setuptools
+    - python setup.py install
+
+build: false
+
+test_script:
+    - cr download package:lib-tensorflow-pip --all
