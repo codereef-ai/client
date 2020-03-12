@@ -666,10 +666,10 @@ def download(i):
                   fo.close()
 
                   if pp.endswith('.sh') or pp.endswith('.bash'):
-                     import os
+                     import stat
                      st=os.stat(pp)
-                     os.chmod('somefile', st.st_mode | stat.S_IEXEC)
-                     
+                     os.chmod(pp, st.st_mode | stat.S_IEXEC)
+
         f.close()
 
         # Remove pack file
