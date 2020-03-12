@@ -3,20 +3,18 @@ language: python
 
 python:
     - "2.7"
+    - "3.5"
+    - "3.6"
+    - "3.7"
 
 matrix:
     include:
         - os: osx
           language: generic
-          python:   3.6
 
 before_install:
     - |
         if [ $TRAVIS_OS_NAME == "osx" ]; then
-              curl https://www.python.org/ftp/python/3.6.8/python-3.6.8-macosx10.9.pkg -s -o /tmp/python.pkg
-              ${SUDOH} installer -pkg /tmp/python.pkg -target /
-              ls -l /Library/Frameworks/Python.framework/Versions/3.6/bin
-              export PATH=/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH
               export PIP_EXE=pip3
               export PYTHON_EXE=python3
         else
@@ -26,7 +24,6 @@ before_install:
 
 install:
     - echo "Env var TRAVIS_OS_NAME ${TRAVIS_OS_NAME}"
-    - echo "Env var WANTED_PYTHON_VERSION ${WANTED_PYTHON_VERSION}"
     - echo "Current directory ${CWD}"
     - ${PYTHON_EXE} --version
     - ${PIP_EXE} --version
