@@ -1,3 +1,7 @@
+* 0.7.24
+  - added travis Linux/OSX tests
+  - major bug fix with bootstrap
+
 * 0.7.23
   - major bug fix with download (missing stat)
 
