@@ -668,7 +668,7 @@ def download(i):
                   if pp.endswith('.sh') or pp.endswith('.bash'):
                      import stat
                      st=os.stat(pp)
-                     os.chmod(xyz, st.st_mode | stat.S_IEXEC)
+                     os.chmod(pp, st.st_mode | stat.S_IEXEC)
 
         f.close()
 
