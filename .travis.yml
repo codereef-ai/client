@@ -9,44 +9,19 @@ python:
 
 matrix:
     include:
-        - name: "Python 3.6.8 on OSX"
+        - name: "OSX with Python 3.6"
           os: osx
-          osx_image: xcode9.2
           language: generic
           python:   3.6
-          env:      WANTED_PYTHON_VERSION=3.6
-
-before_install:
-    - | 
-        if [ $TRAVIS_OS_NAME == "osx" ]; then
-
-          if [ "$WANTED_PYTHON_VERSION" == "2.7" ]; then
-              export PYTHON_EXE=python
-              export PIP_CMD=pip
-          else
-              export PYTHON_EXE=python3
-              export PIP_CMD=pip3
-          fi
-
-        else
-          if [ "$WANTED_PYTHON_VERSION" == "2.7" ]; then
-              export PYTHON_EXE=python
-              export PIP_CMD="python -m pip"
-          else
-              export PYTHON_EXE=python3
-              export PIP_CMD="python3 -m pip"
-          fi
-
-          sudo apt install ${PYTHON_EXE}-pip
-        fi
 
 install:
     - echo "Env var TRAVIS_OS_NAME ${TRAVIS_OS_NAME}"
     - echo "Env var WANTED_PYTHON_VERSION ${WANTED_PYTHON_VERSION}"
     - echo "Current directory ${CWD}"
-    - ${PYTHON_EXE} --version
-    - ${PIP_CMD} install setuptools
-    - ${PYTHON_EXE} setup.py install
+    - python --version
+    - pip --version
+    - pip install setuptools
+    - python setup.py install
 
 script:
     - cr download program:mlperf-inference-v0.5.open.object-detection --version=1.0.0 --all
