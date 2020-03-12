@@ -3,6 +3,9 @@
 [![Python Version](https://img.shields.io/badge/python-2.7%20|%203.4+-blue.svg)](https://pypi.org/project/codereef)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+Linux/MacOS: [![Build Status](https://travis-ci.org/code-reef/client-dev.svg?branch=master)](https://travis-ci.org/ctuning/ck)
+
+
 A cross-platform Client with a Command Line Interface and a Python API for the [open CodeReef portal](https://codereef.ai/portal).
 
 | Support       | As a host platform | As a target platform |
