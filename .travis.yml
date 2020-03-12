@@ -5,11 +5,19 @@ python:
     - "3.6"
     - "3.7"
 
+before_install:
+    - |
+        if [ "$WANTED_PYTHON_VERSION" == "2.7" ]; then
+            export PYTHON_EXE=python
+        else
+            export PYTHON_EXE=python3
+        fi
+
 install:
     - echo "Env var TRAVIS_OS_NAME ${TRAVIS_OS_NAME}"
     - echo "Env var WANTED_PYTHON_VERSION ${WANTED_PYTHON_VERSION}"
     - echo "Current directory ${CWD}"
-    - ${WANTED_PYTHON_VERSION} setup.py install
+    - ${PYTHON_EXE} setup.py install
 
 script:
     - cr download program:mlperf-inference-v0.5.open.object-detection --version=1.0.0 --all
