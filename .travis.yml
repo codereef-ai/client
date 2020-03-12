@@ -6,7 +6,7 @@ python:
     - "3.7"
 
 install:
-    - echo "Env var TRAVIS_OS_NAME: ${TRAVIS_OS_NAME}"
+    - echo "Env var TRAVIS_OS_NAME=${TRAVIS_OS_NAME}"
     - echo "Env var WANTED_PYTHON_VERSION=${WANTED_PYTHON_VERSION}"
     - echo "Current DIR=${CWD}"
     - ${PYTHON_EXE} -m setup.py install
