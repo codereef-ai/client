@@ -28,7 +28,9 @@ with open(convert_path('./README.md')) as f:
 # Package description
 setup(
     name='codereef',
-    author="CodeReef",
+
+    author="Grigori Fursin",
+    author_email="Grigori.Fursin@CodeReef.ai",
 
     version=version,
 
@@ -36,8 +38,8 @@ setup(
 
     license="Apache Software License (Apache 2.0)",
 
+    long_description_content_type='text/markdown',
     long_description=long_readme,
-    long_description_content_type="text/markdown",
 
     url=portal_url,
 
