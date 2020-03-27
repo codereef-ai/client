@@ -17,6 +17,7 @@ environment:
 
 install:
     - pip install setuptools
+    - pip install ck
     - python setup.py install
 
 build: false

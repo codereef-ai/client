@@ -28,6 +28,7 @@ install:
     - ${PYTHON_EXE} --version
     - ${PIP_EXE} --version
     - ${PIP_EXE} install setuptools
+    - ${PIP_EXE} install ck
     - ${PYTHON_EXE} setup.py install
 
 script:
