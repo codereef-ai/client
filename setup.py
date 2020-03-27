@@ -26,7 +26,7 @@ version = imp.load_source(
     'codereef.__init__', os.path.join('codereef', '__init__.py')).__version__
 
 # Default portal
-portal_url='https://dev.codereef.ai/portal'
+portal_url='https://codereef.ai/portal'
 
 # Read description (TBD: should add short description!)
 with open(convert_path('./README.md')) as f:
