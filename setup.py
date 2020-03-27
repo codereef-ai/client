@@ -10,8 +10,6 @@ import os
 import sys
 import imp
 
-import codereef.comm
-
 ############################################################
 from setuptools import find_packages, setup, convert_path
 
@@ -39,11 +37,12 @@ class custom_install(install):
         install.run(self)
 
         # Get release notes 
-        r=codereef.comm.send({'action':'get_client_release_notes', 
-                              'config':{'server_url':portal_url+'/api/v1/?'},
-                              'dict':{'version': version}})
+        import codereef.misc
+        r=codereef.misc.request({'url':portal_url+'/api/v1/?',
+                                 'get':{'action':'get_client_release_notes', 
+                                        'version':version}})
         if r['return']==0:
-           notes=r.get('notes','')
+           notes=r.get('dict',{}).get('notes','')
            if notes!='':
               print ('*********************************************************************')
               print ('Release notes:')
