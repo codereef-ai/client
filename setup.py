@@ -39,8 +39,6 @@ setup(
     long_description=long_readme,
     long_description_content_type="text/markdown",
 
-#    cmdclass={'install': custom_install},
-
     url=portal_url,
 
     python_requires=">=2.7",
@@ -81,7 +79,7 @@ setup(
        ],
 )
 
-############################################################
+###########################################################
 # Get release notes 
 import codereef.misc
 r=codereef.misc.request({'url':portal_url+'/api/v1/?',
@@ -95,3 +93,5 @@ if r['return']==0:
       print ('')
       print (notes)
       print ('*********************************************************************')
+
+exit(0)
