@@ -13,11 +13,6 @@ import imp
 ############################################################
 from setuptools import find_packages, setup, convert_path
 
-try:
-    from setuptools.command.install import install
-except ImportError:
-    from distutils.command.install import install
-
 ############################################################
 # Version
 version = imp.load_source(
@@ -29,26 +24,6 @@ portal_url='https://codereef.ai/portal'
 # Read description (TBD: should add short description!)
 with open(convert_path('./README.md')) as f:
     long_readme = f.read()
-
-############################################################
-class custom_install(install):
-    def run(self):
-        # Run original installer
-        install.run(self)
-
-        # Get release notes 
-        import codereef.misc
-        r=codereef.misc.request({'url':portal_url+'/api/v1/?',
-                                 'get':{'action':'get_client_release_notes', 
-                                        'version':version}})
-        if r['return']==0:
-           notes=r.get('dict',{}).get('notes','')
-           if notes!='':
-              print ('*********************************************************************')
-              print ('Release notes:')
-              print ('')
-              print (notes)
-              print ('*********************************************************************')
 
 # Package description
 setup(
@@ -64,7 +39,7 @@ setup(
     long_description=long_readme,
     long_description_content_type="text/markdown",
 
-    cmdclass={'install': custom_install}, 
+#    cmdclass={'install': custom_install},
 
     url=portal_url,
 
@@ -105,3 +80,18 @@ setup(
         "Intended Audience :: Science/Research"
        ],
 )
+
+############################################################
+# Get release notes 
+import codereef.misc
+r=codereef.misc.request({'url':portal_url+'/api/v1/?',
+                         'get':{'action':'get_client_release_notes', 
+                                'version':version}})
+if r['return']==0:
+   notes=r.get('dict',{}).get('notes','')
+   if notes!='':
+      print ('*********************************************************************')
+      print ('Release notes:')
+      print ('')
+      print (notes)
+      print ('*********************************************************************')
