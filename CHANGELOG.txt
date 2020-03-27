@@ -1,3 +1,7 @@
+* 0.7.25
+  - added release notes during installation
+  - fixed a few minor bugs in MLPerf solutions
+
 * 0.7.24
   - added travis Linux/OSX tests
   - major bug fix with bootstrap

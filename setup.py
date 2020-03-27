@@ -10,16 +10,46 @@ import os
 import sys
 import imp
 
+import codereef.comm
+
 ############################################################
 from setuptools import find_packages, setup, convert_path
 
+try:
+    from setuptools.command.install import install
+except ImportError:
+    from distutils.command.install import install
+
+############################################################
 # Version
 version = imp.load_source(
     'codereef.__init__', os.path.join('codereef', '__init__.py')).__version__
 
+# Default portal
+portal_url='https://dev.codereef.ai/portal'
+
 # Read description (TBD: should add short description!)
 with open(convert_path('./README.md')) as f:
     long_readme = f.read()
+
+############################################################
+class custom_install(install):
+    def run(self):
+        # Run original installer
+        install.run(self)
+
+        # Get release notes 
+        r=codereef.comm.send({'action':'get_client_release_notes', 
+                              'config':{'server_url':portal_url+'/api/v1/?'},
+                              'dict':{'version': version}})
+        if r['return']==0:
+           notes=r.get('notes','')
+           if notes!='':
+              print ('*********************************************************************')
+              print ('Release notes:')
+              print ('')
+              print (notes)
+              print ('*********************************************************************')
 
 # Package description
 setup(
@@ -35,7 +65,9 @@ setup(
     long_description=long_readme,
     long_description_content_type="text/markdown",
 
-    url="https://codereef.ai/portal",
+    cmdclass={'install': custom_install}, 
+
+    url=portal_url,
 
     python_requires=">=2.7",
 
